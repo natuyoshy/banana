@@ -17,4 +17,4 @@ def api(user):
     dict["meesage"] = a
     return dict
 
-run(hots='localhost',port=8088)
+run(host='0.0.0.0',port=8080)
