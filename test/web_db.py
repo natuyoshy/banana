@@ -10,11 +10,10 @@ def normal_page():
 
 @route('/<user_id>',method="get")
 def modify_item(user_id):
-    result = json.dumps(table.find_one(id=user_id))
-    return result
+    return table.find_one(id=user_id)
 
-@route('/<user_id>',method="post")
-def post_page(user_id):
+@route('/',method="post")
+def post_page():
     json = request.json
     id = str(json['id'])
     name = json['name']
