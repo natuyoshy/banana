@@ -1,1 +1,3 @@
-インターン先で書いたお試しのpython
+# はじめてのpython
+
+python3.6とdockerでMySQL使ってpythonはじめました
