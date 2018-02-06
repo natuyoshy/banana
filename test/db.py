@@ -3,6 +3,7 @@ import dataset
 db = dataset.connect('mysql://roots:rootroot@127.0.0.1:3311/mysql')
 
 table = db['sample']
+print("最初")
 #insert
 table.insert(dict(id=4,name='arakita'))
 #update
