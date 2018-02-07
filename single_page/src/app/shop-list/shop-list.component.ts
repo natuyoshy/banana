@@ -17,22 +17,24 @@ export class Sample {
 export class ShopListComponent implements OnInit {
   constructor(private http: HttpClient) { }
   sample: Sample;
+  public obj: any;
 
-  ngOnInit(): void {
-    // this.http.get<Sample>('/api/3').subscribe(data => {
-    //   this.sample = data;
-    //   console.log(this.sample);
-    // });
-  }
+  ngOnInit(): void { }
   add(input): void {
     if (input) {
       this.http.get<Sample>('/api/' + input).subscribe(data => {
         this.sample = data;
         console.log(input + 'の人');
       });
+    } else {
+      console.log('値をいれんか！');
     }
-}
+  }
 
+  addUser(id , name) {
+    console.log(id, name);
+    return false;
+  }
 }
 
 // 登録、全員分の表示

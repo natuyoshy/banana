@@ -1,5 +1,12 @@
 <div>
-  <input type="text" #input />
+  検索：<input type="text" #input />
   <input type="button" value="add" (click)="add(input.value); input.value = ''" />
 </div>
 {{ sample?.id }},{{ sample?.name }}
+
+<br>
+<label for="id">ID:</label>
+<input type="text"  #id>
+<label for="id">name:</label>
+<input type="text" #name>
+<button type="submit" (click)="addUser(id.value,name.value)">送信</button>
