@@ -19,9 +19,20 @@ export class ShopListComponent implements OnInit {
   sample: Sample;
 
   ngOnInit(): void {
-    this.http.get<Sample>('/api/3').subscribe(data => {
-      this.sample = data;
-      console.log(this.sample);
-    });
+    // this.http.get<Sample>('/api/3').subscribe(data => {
+    //   this.sample = data;
+    //   console.log(this.sample);
+    // });
   }
+  add(input): void {
+    if (input) {
+      this.http.get<Sample>('/api/' + input).subscribe(data => {
+        this.sample = data;
+        console.log(input + 'の人');
+      });
+    }
 }
+
+}
+
+// 登録、全員分の表示
