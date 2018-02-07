@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'hello世界';
+
+  name = 'kobayashi';
+  old = '12';
 }
+
+//動的に変えるもので、データマインド
