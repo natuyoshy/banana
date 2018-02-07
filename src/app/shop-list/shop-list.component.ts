@@ -1,22 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-@Component({
+export class Sample {
+  public id: number;
+  public name: string;
+}
+
+@Component( {
   selector: 'app-shop-list',
   templateUrl: './shop-list.component.html',
   styleUrls: ['./shop-list.component.css']
 })
+
+@Injectable()
 export class ShopListComponent implements OnInit {
 
-  list:string[];
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  sample: Sample;
 
-  ngOnInit() {
-    this.list = ['らーめん', 'おかし'];
-  }
-
-  add(input){
-    if (input){
-      this.list.push(input);
-    }
-  }
+  ngOnInit(): void {
+  this.http.get<Sample>('http://localhost:3309/1').subscribe(data => {
+  this.sample = data;
+  console.log(this.sample);
+  });
+}
 }

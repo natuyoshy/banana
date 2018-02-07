@@ -2,8 +2,4 @@
   <input type="text" #input />
   <input type="button" value="add" (click)="add(input.value); input.value = ''" />
 </div>
-<div>
-  <ol *ngFor="let item of list;">
-    <li>{{ item }}</li>
-  </ol>
-</div>
+{{ sample?.id }},{{ sample?.name }}
