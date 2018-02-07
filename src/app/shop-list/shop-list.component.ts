@@ -15,6 +15,8 @@ export class ShopListComponent implements OnInit {
   }
 
   add(input){
-    this.list.push(input);
+    if (input){
+      this.list.push(input);
+    }
   }
 }
