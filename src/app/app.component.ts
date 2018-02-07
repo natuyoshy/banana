@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'hello世界';
 
   name = 'kobayashi';
-  old = '12';
+  old = '20';
 }
 
 //動的に変えるもので、データマインド

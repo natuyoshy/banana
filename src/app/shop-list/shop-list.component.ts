@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopListComponent implements OnInit {
 
+  list:string[];
   constructor() { }
 
   ngOnInit() {
+    this.list = ['らーめん', 'おかし'];
   }
 
+  add(input){
+    this.list.push(input);
+  }
 }
