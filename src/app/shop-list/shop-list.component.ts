@@ -15,14 +15,13 @@ export class Sample {
 
 @Injectable()
 export class ShopListComponent implements OnInit {
-
   constructor(private http: HttpClient) { }
   sample: Sample;
 
   ngOnInit(): void {
-  this.http.get<Sample>('http://localhost:3309/1').subscribe(data => {
-  this.sample = data;
-  console.log(this.sample);
-  });
-}
+    this.http.get<Sample>('/api/3').subscribe(data => {
+      this.sample = data;
+      console.log(this.sample);
+    });
+  }
 }
