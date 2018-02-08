@@ -1,18 +1,27 @@
-<div>
-  検索：<input type="text" #input />
+<div class="alert alert-info" role="alert">
+  <strong>ぐるなび検索</strong>
+  <p>ぐるなびの情報を元に、キーワードを追加して、それに関連するお店を検索することができます</p>
+</div>
+<div class="container">
+
+<div class="box" style="margin:20px;">
+  <h4>登録</h4>
+  <label for="id">ID:</label>
+  <input type="text"  #id>
+  <label for="id">name:</label>
+  <input type="text" #name>
+  <button type="submit" (click)="addUser(id.value,name.value)">登録</button>
+</div>
+
+
+<div class="box" style="margin:20px;">
+  <h4>検索</h4>
+  <input type="text" #input />
   <input type="button" value="検索" (click)="add(input.value); input.value = ''" />
 </div>
 <ol *ngFor="let item of rs;">
   <li>{{ item?.name }},{{ item?.category }},{{ item?.url }},{{ item?.address }}</li>
 </ol>
-
-
-<br>
-<label for="id">ID:</label>
-<input type="text"  #id>
-<label for="id">name:</label>
-<input type="text" #name>
-<button type="submit" (click)="addUser(id.value,name.value)">送信</button>
 
 <agm-map
   [latitude]="lat"
@@ -24,3 +33,4 @@
   [longitude]="m.lng">
 </agm-marker>
 </agm-map>
+</div>
