@@ -19,11 +19,9 @@
   <input type="text" #input />
   <input type="button" value="検索" (click)="add(input.value); input.value = ''" />
 </div>
-<ol *ngFor="let item of rs;">
-  <li>{{ item?.name }},{{ item?.category }},{{ item?.url }},{{ item?.address }}</li>
-</ol>
 
-<agm-map
+<div class="map_box" style="border: 1px solid #333333;">
+  <agm-map
   [latitude]="lat"
   [longitude]="lng"
   [zoom]="zoom">
@@ -33,4 +31,26 @@
   [longitude]="m.lng">
 </agm-marker>
 </agm-map>
+</div>
+
+<table class="table table-hover" style="margin-top:20px;">
+  <thead>
+    <tr>
+      <th scope="col">お店の名前</th>
+      <th scope="col">カテゴリー</th>
+      <th scope="col">住所</th>
+      <th scope="col">URL</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of rs;">
+    <tr>
+      <th>{{ item?.name }}</th>
+      <td>{{ item?.category }}</td>
+      <td>@{{ item?.address }}</td>
+      <td>{{ item?.url }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
 </div>
