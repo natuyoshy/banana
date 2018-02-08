@@ -37,5 +37,3 @@ export class ShopListComponent implements OnInit {
       this.http.post<any>('/api/', this.obj).subscribe((res: Response) => {});
    }
   }
-
-// 登録、全員分の表示
