@@ -46,7 +46,7 @@ export class ShopListComponent implements OnInit {
       //   this.sample = data;
       //   console.log(input + 'の人');
       // });
-      this.http.get<Rs>('/api/' + input).subscribe(data => {
+      this.http.get<Rs>('/api/' + input).subscribe((data : any) => {
         this.rs = data.rest;
         for (let i = 0; i < data.rest.length; i++) {
             this.lat = parseFloat(data.rest[i].latitude);
