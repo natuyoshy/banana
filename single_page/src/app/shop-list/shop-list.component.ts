@@ -31,10 +31,11 @@ export class ShopListComponent implements OnInit {
     }
   }
 
-  addUser(id , name) {
-    console.log(id, name);
-    return false;
+  addUser(id , name) : void {
+     this.obj = { id: id, name: name };
+     console.log(JSON.stringify(this.obj));
+      this.http.post<any>('/api/', this.obj).subscribe((res: Response) => {});
+   }
   }
-}
 
 // 登録、全員分の表示

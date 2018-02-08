@@ -18,7 +18,7 @@ def post_page():
     id = str(json['id'])
     name = json['name']
     table.insert(dict(id=id, name=name))
-    return id + "の" + name + 'さんを追加しました'
+    # return id + "の" + name + 'さんを追加しました'
 
 @route('/<user_id>',method="delete")
 def delete_page(user_id):
