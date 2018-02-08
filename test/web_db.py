@@ -19,7 +19,6 @@ def normal_page():
 def modify_item(user_id):
     s_data = table.find_one(id=user_id)
     freeword = s_data['name']
-    print (freeword)
     query = [
         ("format", "json"),
         ("keyid", keyid),
@@ -41,8 +40,7 @@ def modify_item(user_id):
     ####
     # 取得した結果を解析
     ####
-    data = json.loads(result)
-    print(data)
+    # print(data)
     # エラーの場合
     if "error" in data:
         if "message" in data:
@@ -61,29 +59,42 @@ def modify_item(user_id):
         print(u"レストランデータが見つからなかったため終了します。")
         sys.exit()
 
-    # ヒット件数表示
-    print("{0}件ヒットしました。".format(total_hit_count))
-    print("----")
-
     # 出力件数
     disp_count = 0
 
     # レストランデータ取得
     for rest in data["rest"]:
         line = []
-        id = ""
         name = ""
-        access_line = ""
-        access_station = ""
-        access_walk = ""
-        code_category_name_s = []
-        # タブ区切りで出力
-        print("\t".join(line))
+        latitude = ""
+        longitude = ""
+        category = ""
+        url = ""
+        address = ""
+        if "name" in rest:
+            name = u"{0}".format(rest["name"])
+            line.append(name)
+        if "latitude" in rest:
+            latitude = u"{0}".format(rest["latitude"])
+            line.append(latitude)
+        if "longitude" in rest:
+            longitude = u"{0}".format(rest["longitude"])
+            line.append(longitude)
+        if "category" in rest:
+            category = u"{0}".format(rest["category"])
+            line.append(category)
+        if "url" in rest:
+            url = u"{0}".format(rest["url"])
+            line.append(url)
+        if "url" in rest:
+            address = u"{0}".format(rest["address"])
+            line.append(address)
+        print ("\t".join(line))
         disp_count += 1
 
     # 出力件数を表示して終了
-    print("----")
-    print(u"{0}件出力しました。".format(disp_count))
+    print ("----")
+    print (u"{0}件出力しました。".format(disp_count))
 
 
 @route('/', method="post")
