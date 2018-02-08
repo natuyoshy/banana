@@ -9,5 +9,6 @@ services:
       MYSQL_ROOT_PASSWORD: rootroot
     ports:
       - "3311:3306"
+    command: mysqld --character_set_server=utf8
     volumes:
       - ./db_data:/var/lib/mysql

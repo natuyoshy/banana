@@ -2,7 +2,10 @@
   検索：<input type="text" #input />
   <input type="button" value="検索" (click)="add(input.value); input.value = ''" />
 </div>
-{{ sample?.id }},{{ sample?.name }}
+<ol *ngFor="let item of rs;">
+  <li>{{ item?.name }},{{ item?.category }},{{ item?.url }},{{ item?.address }}</li>
+</ol>
+
 
 <br>
 <label for="id">ID:</label>
@@ -10,3 +13,7 @@
 <label for="id">name:</label>
 <input type="text" #name>
 <button type="submit" (click)="addUser(id.value,name.value)">送信</button>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>

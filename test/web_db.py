@@ -5,7 +5,7 @@ import sys
 import urllib.parse
 import urllib.request
 db = dataset.connect('mysql://roots:rootroot@127.0.0.1:3311/mysql')
-table = db['sample']
+table = db['ra-men']
 keyid = "fdbe93860953f0d14f763117f55b38ab"
 url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/"
 
@@ -65,12 +65,6 @@ def modify_item(user_id):
     # レストランデータ取得
     for rest in data["rest"]:
         line = []
-        name = ""
-        latitude = ""
-        longitude = ""
-        category = ""
-        url = ""
-        address = ""
         if "name" in rest:
             name = u"{0}".format(rest["name"])
             line.append(name)
@@ -95,6 +89,9 @@ def modify_item(user_id):
     # 出力件数を表示して終了
     print ("----")
     print (u"{0}件出力しました。".format(disp_count))
+
+    print (data)
+    return (data)
 
 
 @route('/', method="post")
