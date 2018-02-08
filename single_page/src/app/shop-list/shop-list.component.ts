@@ -28,25 +28,15 @@ export class ShopListComponent implements OnInit {
   rs : Rs[];
   public obj: any;
   zoom: number = 8;
-  lat: number = 35.690921;
-  lng: number = 139.70025799999996;
+  lat: number = 35.681382;
+  lng: number = 139.76608399999998;
 
   markers: Narker[] = [
-    {
-    lat: 35.681382,
-    lng: 139.76608399999998,
-    draggable: true
-  },
   {
     lat: 35.675069,
     lng: 139.763328,
     draggable: true
   },
-  {
-    lat: 35.665498,
-    lng: 139.75964,
-    draggable: true
-  }
 ];
 
   ngOnInit(): void { }
@@ -58,8 +48,15 @@ export class ShopListComponent implements OnInit {
       // });
       this.http.get<Rs>('/api/' + input).subscribe(data => {
         this.rs = data.rest;
-        this.lat = parseFloat(data.rest[1].latitude);
-        this.lng = parseFloat(data.rest[1].longitude);
+        for (let i = 0; i < data.rest.length; i++) {
+            this.lat = parseFloat(data.rest[i].latitude);
+            this.lng = parseFloat(data.rest[i].longitude);
+            this.markers.push({
+            lat: this.lat,
+            lng: this.lng,
+            draggable: true
+          });
+        }
         console.log(this.lat);
       });
     } else {
