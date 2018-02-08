@@ -7,7 +7,6 @@ export class Sample {
   public id: number;
   public name: string;
 }
-
 export class Rs {
   public name: string;
   public latitude: number;
@@ -28,9 +27,27 @@ export class ShopListComponent implements OnInit {
   sample: Sample;
   rs : Rs[];
   public obj: any;
-  title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  zoom: number = 8;
+  lat: number = 35.690921;
+  lng: number = 139.70025799999996;
+
+  markers: Narker[] = [
+    {
+    lat: 35.681382,
+    lng: 139.76608399999998,
+    draggable: true
+  },
+  {
+    lat: 35.675069,
+    lng: 139.763328,
+    draggable: true
+  },
+  {
+    lat: 35.665498,
+    lng: 139.75964,
+    draggable: true
+  }
+];
 
   ngOnInit(): void { }
   add(input): void {
@@ -41,7 +58,9 @@ export class ShopListComponent implements OnInit {
       // });
       this.http.get<Rs>('/api/' + input).subscribe(data => {
         this.rs = data.rest;
-        console.log(data);
+        this.lat = parseFloat(data.rest[1].latitude);
+        this.lng = parseFloat(data.rest[1].longitude);
+        console.log(this.lat);
       });
     } else {
       console.log('値をいれんか！');
@@ -53,4 +72,10 @@ export class ShopListComponent implements OnInit {
      console.log(JSON.stringify(this.obj));
       this.http.post<any>('/api/', this.obj).subscribe((res: Response) => {});
    }
+  }
+
+ interface Narker {
+    lat: number;
+    lng: number;
+    draggable: boolean;
   }

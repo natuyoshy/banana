@@ -14,6 +14,13 @@
 <input type="text" #name>
 <button type="submit" (click)="addUser(id.value,name.value)">送信</button>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom">
+  <agm-marker
+  *ngFor="let m of markers; let i = index"
+  [latitude]="m.lat"
+  [longitude]="m.lng">
+</agm-marker>
 </agm-map>
