@@ -1,8 +1,9 @@
 import unittest.mock
 
+from bottle import request
 from mock.mock import MagicMock
 
-from web_db import search_rest, get_freeword
+from web_db import search_rest, get_freeword, get_gurunavi
 
 
 class TestStringMethods(unittest.TestCase):
@@ -61,4 +62,21 @@ class TestStringMethods(unittest.TestCase):
 
     def フリーワードテスト(self):
         freeword = get_freeword(MagicMock(value="らーめん"))
-        assert freeword == ""
+        self.assertTrue(freeword)
+
+    def ぐるなびAPIテスト(self):
+
+        keyid = get_gurunavi(MagicMock(value="1"))
+        freeword = get_gurunavi(MagicMock(value="らーめん"))
+        query = {"format", "json",
+                 "keyid", keyid,
+                 "freeword", freeword,
+                 "freeword_condition", '2'
+                 }
+        url = "https://api.gnavi.co.jp/RestSearchAPI/20150630/"
+        # API実行
+        try:
+            result = request.get(url, query)
+            self.assertTrue(result)
+        except ValueError:
+            print(u"APIアクセスに失敗しました。")
