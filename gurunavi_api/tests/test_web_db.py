@@ -58,3 +58,7 @@ class TestStringMethods(unittest.TestCase):
 
         self.assertListEqual(rests, [{'name', '567', '563', 'ggg', 'ggg'}, {'names', '564', '533', 'gd', 'gg'}])
         self.assertListEqual(len(rests), 2)
+
+    def フリーワードテスト(self):
+        freeword = get_freeword(MagicMock(value="らーめん"))
+        assert freeword == ""
