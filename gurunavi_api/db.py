@@ -1,5 +1,4 @@
 import dataset
-import mock
 
 db = dataset.connect('mysql://roots:rootroot@127.0.0.1:3311/mysql')
 

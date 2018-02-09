@@ -1,6 +1,8 @@
-import unittest
+import unittest.mock
 
-from web_db import search_rest
+from mock.mock import MagicMock
+
+from web_db import search_rest, get_freeword
 
 
 class TestStringMethods(unittest.TestCase):
