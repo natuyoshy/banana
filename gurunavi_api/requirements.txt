@@ -1,0 +1,6 @@
+requests
+bottle
+dataset
+mysqlclient
+urllib3
+mock
