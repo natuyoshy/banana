@@ -2,12 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-@Component( {
-  selector: 'app-shop-list',
-  templateUrl: './shop-list.component.html',
-  styleUrls: ['./shop-list.component.css']
-})
-
 export class Sample {
   public id: number;
   public name: string;
@@ -20,11 +14,13 @@ export class Rs {
   public url : string;
   public address: string;
 }
-interface Narker {
-   lat: number;
-   lng: number;
-   draggable: boolean;
- }
+
+@Component( {
+  selector: 'app-shop-list',
+  templateUrl: './shop-list.component.html',
+  styleUrls: ['./shop-list.component.css']
+})
+
 export class ShopListComponent implements OnInit {
   constructor(private http: HttpClient) { }
   sample: Sample;
@@ -67,4 +63,10 @@ export class ShopListComponent implements OnInit {
      console.log(JSON.stringify(this.obj));
       this.http.post<any>('/api/', this.obj).subscribe((res: Response) => {});
    }
+  }
+
+ interface Narker {
+    lat: number;
+    lng: number;
+    draggable: boolean;
   }
