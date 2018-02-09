@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+@Component( {
+  selector: 'app-shop-list',
+  templateUrl: './shop-list.component.html',
+  styleUrls: ['./shop-list.component.css']
+})
 
 export class Sample {
   public id: number;
@@ -15,13 +20,11 @@ export class Rs {
   public url : string;
   public address: string;
 }
-
-@Component( {
-  selector: 'app-shop-list',
-  templateUrl: './shop-list.component.html',
-  styleUrls: ['./shop-list.component.css']
-})
-
+interface Narker {
+   lat: number;
+   lng: number;
+   draggable: boolean;
+ }
 export class ShopListComponent implements OnInit {
   constructor(private http: HttpClient) { }
   sample: Sample;
@@ -42,10 +45,6 @@ export class ShopListComponent implements OnInit {
   ngOnInit(): void { }
   add(input): void {
     if (input) {
-      // this.http.get<Sample>('/api/' + input).subscribe(data => {
-      //   this.sample = data;
-      //   console.log(input + 'の人');
-      // });
       this.http.get<Rs>('/api/' + input).subscribe((data : any) => {
         this.rs = data.rest;
         for (let i = 0; i < data.rest.length; i++) {
@@ -57,7 +56,6 @@ export class ShopListComponent implements OnInit {
             draggable: true
           });
         }
-        console.log(this.lat);
       });
     } else {
       console.log('値をいれんか！');
@@ -69,10 +67,4 @@ export class ShopListComponent implements OnInit {
      console.log(JSON.stringify(this.obj));
       this.http.post<any>('/api/', this.obj).subscribe((res: Response) => {});
    }
-  }
-
- interface Narker {
-    lat: number;
-    lng: number;
-    draggable: boolean;
   }
